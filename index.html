@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./CSS/Style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bienvenido</h1>
+        <p>Seleccione una moto para financiar:</p>
+    
+        <select id="motoSelect" onchange="mostrarInformacionMoto()">
+          <option value="MT07">MT07 (Yamaha)</option>
+          <option value="Duke 890R">Duke 890R (KTM)</option>
+          <option value="Monster">Monster (Ducati)</option>
+        </select>
+    
+        <div id="precioContainer"></div>
+        <div id="caracteristicasContainer"></div>
+    
+        <button onclick="mostrarFormulario()">Elegir moto y plan de financiación</button>
+    
+        <div id="formularioContainer"></div>
+    </div>
+    
+    <script src="./index.js"></script>
+
+
+</body>
+</html>
+
+
