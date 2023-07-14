@@ -108,7 +108,20 @@ function validarFormulario() {
 
     guardarDatosEnLocalStorage(nombre, email, id, edad);
 
+    mostrarMensaje();
+
+    setTimeout(function() {
+        location.reload();
+    }, 3000);
+
     return true;
+}
+
+function mostrarMensaje() {
+    let formularioContainer = document.getElementById("formularioContainer");
+    formularioContainer.innerHTML = `
+        <p>¡Datos enviados correctamente!</p>
+    `;
 }
 
 
