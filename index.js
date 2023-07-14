@@ -17,11 +17,11 @@ const motos = [
 ];
   
 function mostrarInformacionMoto() {
-    var motoSelect = document.getElementById("motoSelect");
-    var precioContainer = document.getElementById("precioContainer");
-    var caracteristicasContainer = document.getElementById("caracteristicasContainer");
-    var motoSeleccionada = motoSelect.options[motoSelect.selectedIndex].text;
-    var precio = obtenerPrecio(motoSeleccionada);
+    let motoSelect = document.getElementById("motoSelect");
+    let precioContainer = document.getElementById("precioContainer");
+    let caracteristicasContainer = document.getElementById("caracteristicasContainer");
+    let motoSeleccionada = motoSelect.options[motoSelect.selectedIndex].text;
+    let precio = obtenerPrecio(motoSeleccionada);
   
     precioContainer.innerHTML = "El precio de la moto seleccionada es: " + precio;
   
@@ -29,7 +29,7 @@ function mostrarInformacionMoto() {
 }
   
 function obtenerPrecio(motoSeleccionada) {
-    var precio = 0;
+    let precio = 0;
     for (let i = 0; i < motos.length; i++) {
         if (motoSeleccionada.includes(motos[i].nombre)) {
             precio = motos[i].precio;
@@ -44,7 +44,7 @@ function mostrarCaracteristicas(motoSeleccionada, caracteristicasContainer) {
   
     for (let i = 0; i < motos.length; i++) {
         if (motoSeleccionada.includes(motos[i].nombre)) {
-            var caracteristicas = document.createElement("ul");
+            let caracteristicas = document.createElement("ul");
             caracteristicas.innerHTML = `
                 <li>Marca: ${motos[i].marca}</li>
                 <li>Precio: ${motos[i].precio}</li>
@@ -60,7 +60,7 @@ function mostrarCaracteristicas(motoSeleccionada, caracteristicasContainer) {
 }
   
 function mostrarFormulario() {
-    var formularioContainer = document.getElementById("formularioContainer");
+    let formularioContainer = document.getElementById("formularioContainer");
     formularioContainer.innerHTML = `
         <h3 class="form-header">Completa tus datos personales:</h3>
         <form id="formulario" onsubmit="return validarFormulario()">
@@ -90,21 +90,31 @@ function mostrarFormulario() {
 }
   
 function validarFormulario() {
-    var nombreInput = document.getElementById("nombre");
-    var emailInput = document.getElementById("email");
-    var idInput = document.getElementById("id");
-    var edadInput = document.getElementById("edad");
+
+    let nombreInput = document.getElementById("nombre");
+    let emailInput = document.getElementById("email");
+    let idInput = document.getElementById("id");
+    let edadInput = document.getElementById("edad");
   
-    var nombre = nombreInput.value.trim();
-    var email = emailInput.value.trim();
-    var id = idInput.value.trim();
-    var edad = parseInt(edadInput.value);
+    let nombre = nombreInput.value.trim();
+    let email = emailInput.value.trim();
+    let id = idInput.value.trim();
+    let edad = parseInt(edadInput.value);
   
     if (nombre === "" || email === "" || id === "" || isNaN(edad)) {
         alert("Por favor, completa todos los campos correctamente.");
         return false;
     }
-  
-    alert("Formulario enviado correctamente. ¡Gracias por tu interés!");
+
+    guardarDatosEnLocalStorage(nombre, email, id, edad);
+
     return true;
+}
+
+
+function guardarDatosEnLocalStorage(nombre, email, id, edad) {
+    localStorage.setItem('nombre', nombre);
+    localStorage.setItem('email', email);
+    localStorage.setItem('id', id);
+    localStorage.setItem('edad', edad.toString());
 }
