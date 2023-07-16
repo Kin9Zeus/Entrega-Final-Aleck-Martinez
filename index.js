@@ -110,9 +110,16 @@ function validarFormulario() {
 
     mostrarMensaje();
 
+    console.log("Datos del formulario:");
+    console.log(`Nombre: ${nombre}`);
+    console.log(`Email: ${email}`);
+    console.log(`ID: ${id}`);
+    console.log(`Edad: ${edad}`);
+    console.log("----");
+
     setTimeout(function() {
         location.reload();
-    }, 3000);
+    }, 5000);
 
     return true;
 }
@@ -142,7 +149,13 @@ fetch(`${API_URL}/users`)
     return response.json();
   })
   .then((data) => {
-    console.log(data);
+    console.log("Datos de la API:");
+    for (const user of data) {
+      console.log(`Nombre: ${user.name}`);
+      console.log(`Usuario: ${user.username}`);
+      console.log(`Email: ${user.email}`);
+      console.log("----");
+    }
   })
   .catch((error) => {
     console.error("Error fetching data:", error);
