@@ -119,7 +119,7 @@ function validarFormulario() {
 
     setTimeout(function() {
         location.reload();
-    }, 5000);
+    }, 3000);
 
     return true;
 }
@@ -128,6 +128,8 @@ function mostrarMensaje() {
     let formularioContainer = document.getElementById("formularioContainer");
     formularioContainer.innerHTML = `
         <p>¡Datos enviados correctamente!</p>
+        <p>Inspecciona la consola para ver simulación de clientes pasados</p>
+        <p>Tus datos se almacenarán de manera local</p>
     `;
 }
 
@@ -149,7 +151,7 @@ fetch(`${API_URL}/users`)
     return response.json();
   })
   .then((data) => {
-    console.log("Datos de la API:");
+    console.log("Datos de la API de simulacion de clientes pasados:");
     for (const user of data) {
       console.log(`Nombre: ${user.name}`);
       console.log(`Usuario: ${user.username}`);
